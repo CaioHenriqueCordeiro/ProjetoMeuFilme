@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import lombok.Data;
 
@@ -23,8 +22,8 @@ public class Diretor {
 	
 	@Column(nullable = false)
 	private String nome;
-	
-	@JsonFormat(pattern = "dd-MM-yyyy", shape = Shape.STRING)
+
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column
 	private Date dataNascimento;
 

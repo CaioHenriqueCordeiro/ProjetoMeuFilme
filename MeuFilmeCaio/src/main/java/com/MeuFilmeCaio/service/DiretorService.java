@@ -43,6 +43,7 @@ public class DiretorService {
 	public Diretor atualizar(@PathVariable Long id, @RequestBody Diretor diretor) {
 		Diretor dir = diretorRepository.findById(id).get();	
 		dir.setNome(diretor.getNome());
+		dir.setDataNascimento(diretor.getDataNascimento());
 		
 		return diretorRepository.save(dir);
 	}
