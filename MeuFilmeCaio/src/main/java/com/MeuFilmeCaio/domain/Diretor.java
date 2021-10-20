@@ -1,13 +1,14 @@
 package com.MeuFilmeCaio.domain;
 
-
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -25,6 +26,8 @@ public class Diretor {
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column
-	private Date dataNascimento;
-
+	private LocalDate dataNascimento;
+	
+	@OneToMany
+	private List<Filme> filme;
 }

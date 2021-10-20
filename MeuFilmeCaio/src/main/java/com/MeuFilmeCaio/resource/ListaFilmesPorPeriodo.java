@@ -1,4 +1,4 @@
-package com.MeuFilmeCaio.dto;
+package com.MeuFilmeCaio.resource;
 
 import java.util.Date;
 import java.text.ParseException;

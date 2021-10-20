@@ -1,6 +1,6 @@
 package com.MeuFilmeCaio.domain;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,13 +29,13 @@ public class Filme {
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column
-	private Date dataLancamento;
+	private LocalDate dataLancamento;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Genero genero;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Diretor diretor;
 }

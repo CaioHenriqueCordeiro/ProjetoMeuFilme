@@ -1,4 +1,4 @@
-package com.MeuFilmeCaio.dto;
+package com.MeuFilmeCaio.resource;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ import com.MeuFilmeCaio.domain.Filme;
 import com.MeuFilmeCaio.repository.FilmeRepository;
 
 @RestController
-@RequestMapping("/filmesGenero")
-public class ListaFilmesPorGenero {
+@RequestMapping("/filmesDiretor")
+public class ListaFilmesPorDiretor {
 	@Autowired
 	private FilmeRepository filmeRepository;
 	
 	@GetMapping("/{nome}")
 	public List<Filme> listaFilmesGenero(@PathVariable String nome){
-		return filmeRepository.buscarFilmePorGenero(nome.toUpperCase());
+		return filmeRepository.buscarFilmePorDiretor(nome.toUpperCase());
 		
 	}
 }
