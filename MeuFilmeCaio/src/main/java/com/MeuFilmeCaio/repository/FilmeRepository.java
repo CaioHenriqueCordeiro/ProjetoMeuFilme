@@ -1,6 +1,6 @@
 package com.MeuFilmeCaio.repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -24,6 +24,6 @@ public interface FilmeRepository extends JpaRepository<Filme, Long>{
 	@Query(
 			value = "Select f from Filme f where f.dataLancamento BETWEEN :inicio and :fim"
 		)
-	List<Filme> buscarFilmePorPeriodo(@Param("inicio") Date inicio, @Param("fim") Date fim);
+	List<Filme> buscarFilmePorPeriodo(@Param("inicio") LocalDate inicio, @Param("fim") LocalDate fim);
 	
 }

@@ -1,14 +1,14 @@
 package com.MeuFilmeCaio.resource;
 
-import java.util.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.MeuFilmeCaio.domain.Filme;
@@ -20,11 +20,12 @@ public class ListaFilmesPorPeriodo {
 	@Autowired
 	private FilmeRepository filmeRepository;
 	
-	@GetMapping("/{inicio}/{fim}")
-	public List<Filme> listaFilmesPeriodo(@PathVariable String inicio, @PathVariable String fim) throws ParseException{
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		Date dataini = formatter.parse(inicio);
-		Date datafim = formatter.parse(fim);
+	@GetMapping
+	public List<Filme> listaFilmesPeriodo(@RequestParam String inicio, @RequestParam String fim) throws ParseException{
+		LocalDate dataini = LocalDate.parse(inicio, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		LocalDate datafim = LocalDate.parse(fim, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		
+	
 		
 		return filmeRepository.buscarFilmePorPeriodo(dataini, datafim);
 	}

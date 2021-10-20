@@ -23,5 +23,5 @@ public class Genero {
 	private String nome;
 	
 	@OneToMany
-	private List<Filme> filme;
+	private List<Filme> filmes;
 }

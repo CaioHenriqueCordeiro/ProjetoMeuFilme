@@ -1,9 +1,9 @@
 package com.MeuFilmeCaio.resource;
 
+import com.MeuFilmeCaio.domain.Filme;
+import com.MeuFilmeCaio.dto.SalvarFilmeDto;
+import com.MeuFilmeCaio.service.FilmeService;
 
-import com.MeuFilmeCaio.domain.Diretor;
-import com.MeuFilmeCaio.dto.SalvarDiretorDto;
-import com.MeuFilmeCaio.service.DiretorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,29 +17,29 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/diretor")
-public class DiretorResourceEscrita {
+@RequestMapping("/filme")
+public class FilmeResourceEscrita {
 
-	DiretorService servico;
+	FilmeService servico;
 
     @Autowired
-    DiretorResourceEscrita(DiretorService servico) {
+    FilmeResourceEscrita(FilmeService servico) {
         this.servico = servico;
     }
 
     @PostMapping
-    public ResponseEntity<Diretor> salvarDiretor(@RequestBody SalvarDiretorDto diretor){
-    	return ResponseEntity.ok(servico.adicionarDiretor(diretor));
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public ResponseEntity<Filme> salvarFilme(@RequestBody SalvarFilmeDto filme){
+    	return ResponseEntity.ok(servico.adicionarFilme(filme));
     }
     
     @PutMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity<Diretor> atualizarDiretor(@PathVariable Long id, @RequestBody Diretor diretor){
-    	return ResponseEntity.ok(servico.atualizarDiretorById(id, diretor));
+    public ResponseEntity<Filme> atualizarFilme(@PathVariable Long id, @RequestBody Filme filme){
+    	return ResponseEntity.ok(servico.atualizarFilmeById(id, filme));
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Diretor> deleterDiretor(@PathVariable Long id){
-    	return ResponseEntity.ok(servico.deletarDiretorById(id));
+    public ResponseEntity<Filme> deletarFilme(@PathVariable Long id){
+    	return ResponseEntity.ok(servico.deletarFilmeById(id));
     }
 }
