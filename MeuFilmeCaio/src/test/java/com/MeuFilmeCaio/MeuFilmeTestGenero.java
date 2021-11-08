@@ -1,5 +1,6 @@
 package com.MeuFilmeCaio;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -34,14 +35,14 @@ public class MeuFilmeTestGenero{
 	@Test
 	@DisplayName("Testa inclusão de genero")
 	public void adicionarGenero() {
+		Genero g = new Genero();
+		g.setNome("Terror");
+		Mockito.when(generoRepository.save(Mockito.any())).thenReturn(g);
+		
 		SalvarGeneroDto gen = new SalvarGeneroDto();
-		
 		gen.setNome("Terror");
+		Genero resp = generoService.adicionarGenero(gen);
 		
-		Genero genDomain = new Genero();
-		genDomain.setNome(gen.getNome());
-		
-		generoService.adicionarGenero(gen);
-		verify(generoRepository, Mockito.times(1)).save(genDomain);
+		assertTrue(resp.getNome().equals(gen.getNome()));
 	}
 }

@@ -13,7 +13,6 @@ import com.MeuFilmeCaio.dto.SalvarGeneroDto;
 import com.MeuFilmeCaio.repository.GeneroRepository;
 
 @Service
-@RestController
 public class GeneroService implements com.MeuFilmeCaio.service.GeneroService{
 	@Autowired
 	private GeneroRepository generoRepository;
